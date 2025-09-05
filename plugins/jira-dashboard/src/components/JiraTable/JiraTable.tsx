@@ -94,7 +94,6 @@ export const JiraTable = ({
   const baseTableStyle: CSSProperties = {
     width: '100%',
     maxHeight: '500px',
-    padding: '20px',
     overflowY: 'auto',
     boxSizing: 'border-box',
     overflowX: 'auto',
@@ -114,7 +113,7 @@ export const JiraTable = ({
           }}
           filters={filters}
           emptyContent={
-            <Typography display="flex" justifyContent="center" pt={30}>
+            <Typography display="flex" justifyContent="center" py={4}>
               No issues found&nbsp;
             </Typography>
           }
@@ -137,7 +136,7 @@ export const JiraTable = ({
       }}
       filters={filters}
       emptyContent={
-        <Typography display="flex" justifyContent="center" pt={30}>
+        <Typography display="flex" justifyContent="center" py={4}>
           No issues found&nbsp;
         </Typography>
       }

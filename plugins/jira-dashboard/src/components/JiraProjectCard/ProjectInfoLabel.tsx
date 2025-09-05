@@ -3,7 +3,7 @@ import Typography from '@mui/material/Typography';
 
 type ProjectInfoLabelProps = {
   label: string;
-  value: string;
+  value: string | JSX.Element;
 };
 
 export const ProjectInfoLabel = ({ label, value }: ProjectInfoLabelProps) => {
@@ -15,9 +15,7 @@ export const ProjectInfoLabel = ({ label, value }: ProjectInfoLabelProps) => {
       >
         {label}
       </Typography>
-      <Typography variant="body1" fontWeight={900}>
-        {value}
-      </Typography>
+      <Typography variant="body1">{value}</Typography>
     </Box>
   );
 };

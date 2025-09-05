@@ -29,7 +29,7 @@ export const columnKey: TableColumn<Issue> = {
           <img
             src={issue.fields?.issuetype.iconUrl}
             alt={issue.fields?.issuetype.name}
-            style={{ paddingRight: '15px' }}
+            style={{ paddingRight: '15px', height: '16px' }}
           />
           {issue.key}
         </Box>

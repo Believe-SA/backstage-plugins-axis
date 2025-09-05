@@ -1,16 +1,29 @@
 import Divider from '@mui/material/Divider';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import { Avatar, InfoCard } from '@backstage/core-components';
-import { LinkButton } from '@backstage/core-components';
+import {
+  Avatar,
+  InfoCard,
+  MarkdownContent,
+  LinkButton,
+} from '@backstage/core-components';
 import { Project } from '@axis-backstage/plugin-jira-dashboard-common';
 import { ProjectInfoLabel } from './ProjectInfoLabel';
 import { getProjectUrl } from '../../lib';
+import { makeStyles } from '@mui/styles';
 
 type JiraProjectCardProps = {
   project: Project;
 };
 
+// MUI class to disable all margin inside the markdown content for p descendants
+const markdownContentClass = makeStyles(() => ({
+  markdown: {
+    '& p': {
+      margin: 0,
+    },
+  },
+}));
 export const JiraProjectCard = ({ project }: JiraProjectCardProps) => {
   return (
     <InfoCard variant="fullHeight">
@@ -18,8 +31,8 @@ export const JiraProjectCard = ({ project }: JiraProjectCardProps) => {
         <Avatar
           picture={project.avatarUrls['48x48']}
           customStyles={{
-            width: 50,
-            height: 50,
+            width: 48,
+            height: 48,
           }}
         />
 
@@ -37,7 +50,16 @@ export const JiraProjectCard = ({ project }: JiraProjectCardProps) => {
           />
         )}
         {project.description && (
-          <ProjectInfoLabel label="Description" value={project.description} />
+          <ProjectInfoLabel
+            label="Description"
+            value={
+              <MarkdownContent
+                content={project.description}
+                dialect="common-mark"
+                className={markdownContentClass().markdown}
+              />
+            }
+          />
         )}
         {(project?.lead?.key || project?.lead?.displayName) && (
           <ProjectInfoLabel

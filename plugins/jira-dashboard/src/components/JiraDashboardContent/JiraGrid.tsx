@@ -1,4 +1,4 @@
-import Grid from '@mui/material/Grid';
+import Grid from '@mui/material/Unstable_Grid2';
 import { JiraProjectCard } from '../JiraProjectCard';
 import { JiraTable } from '../JiraTable';
 import {
@@ -23,11 +23,11 @@ export const JiraGrid = ({
 }: JiraGridProps) => {
   return (
     <Grid container spacing={3}>
-      <Grid item xs={12} xl={6} data-testid="project-card">
+      <Grid xs={12} xl={6} data-testid="project-card">
         <JiraProjectCard project={project} />
       </Grid>
       {tableData.map((value: JiraDataResponse) => (
-        <Grid item xs={12} xl={6} key={value.name} data-testid="issue-table">
+        <Grid xs={12} xl={6} key={value.name} data-testid="issue-table">
           <JiraTable
             tableContent={value}
             showFilters={showFilters}
@@ -37,7 +37,6 @@ export const JiraGrid = ({
               width: '100%',
               height: 'max-content',
               maxHeight: '500px',
-              padding: '20px',
               overflowY: 'auto',
             }}
           />
